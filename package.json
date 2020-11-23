@@ -1,0 +1,22 @@
+{
+  "name": "deployer-action",
+  "version": "1.0.0",
+  "description": "The official github action for deployer",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "CI/CD",
+    "Deployer",
+    "Actions",
+    "Github"
+  ],
+  "author": "Stanley Masinde",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0"
+  }
+}
