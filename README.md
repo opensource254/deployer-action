@@ -30,6 +30,7 @@ The time the deployment was completed
   uses: opensource254/deployer-action
   with:
   ip-address: <your-ipv4-ip>
+  username: <your-username>
   deployment-path: /var/www/your-domain.com
   SSH-key: ${{ secrets.SSH_KEY }}
 ```

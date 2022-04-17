@@ -7,6 +7,10 @@ inputs:
   ip-address:
       description: The public IP Address of your VPS
       required: true
+  username:
+      description: The username of your VPS
+      required: true
+      default: root
   deployment-path:
       description: The path to your deployment folder
       required: true
