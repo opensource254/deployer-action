@@ -25,8 +25,10 @@ The time the deployment was completed
 
 ## Example usage
 
-uses: opensource254/deployeraction@0.1.0
+```yml
+uses: opensource254/deployer-action
 with:
-  ip-address: <your-ipv4-ip>
-  deployment-path: /var/www/your-domain.com
-  SSH-key: ${{ secrets.SSH_KEY }}
+  - ip-address: <your-ipv4-ip>
+  - deployment-path: /var/www/your-domain.com
+  - SSH-key: ${{ secrets.SSH_KEY }}
+```
