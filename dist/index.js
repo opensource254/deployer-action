@@ -2975,12 +2975,11 @@ try {
     const deploymentPath = core.getInput('deployment-path')
     const sshKey = core.getInput('ssh-key')
     const now = new Date()
-
-    // Copy the repo using scp
-    const scpCommand = `scp -i ${sshKey} -r . ${ipAddress}:${deploymentPath}`
     
     (async () => {
-        await exec(scpCommand)
+        // establish ssh connection
+        core.setOutput('ssh-connection', `ssh -i ${sshKey} ${ipAddress}`)
+        await exec('scp', ['-i', sshKey, '-r', '.', ipAddress, deploymentPath])
     })()
     core.setOutput('deployment-path', deploymentPath)
     core.setOutput('deployment-time', now.toISOString())
