@@ -5,15 +5,12 @@ try {
     const ipAddress = core.getInput('ip-address')
     const deploymentPath = core.getInput('deployment-path')
     const sshKey = core.getInput('ssh-key')
-    const usename = core.getInput('usename')
+    const username = core.getInput('username')
     const now = new Date()
 
-    const env = process.env;
-    const actionPath = env.GITHUB_ACTION_PATH
-
     const deploy = async () => {
-        await exec('ssh', ['-i', sshKey, `${usename}@${ipAddress}`, `"mkdir -p $directory"`])
-        await exec('scp', ['-i', sshKey, '-r', './*', `${usename}@${ipAddress}:${deploymentPath}`])
+        await exec('ssh', ['-i', sshKey, `${username}@${ipAddress}`, `"mkdir -p $directory"`])
+        await exec('scp', ['-i', sshKey, '-r', './*', `${username}@${ipAddress}:${deploymentPath}`])
     }
 
     deploy()
