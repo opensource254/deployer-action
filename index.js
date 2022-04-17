@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const { exec } = require('@actions/exec');
+const github = require('@actions/github');
 try {
     const ipAddress = core.getInput('ip-address')
     const deploymentPath = core.getInput('deployment-path')
@@ -7,20 +8,12 @@ try {
     const usename = core.getInput('usename')
     const now = new Date()
 
+    const env = process.env;
+    const githubWorkspace = env.GITHUB_WORKSPACE;
+
     const deploy = async () => {
-        let output = ''
-        let errorOutput = ''
-        await exec('chmod', ['+x', './scp.sh'])
-        await exec('./scp.sh', [sshKey, ipAddress, deploymentPath, usename], {
-            listeners: {
-                stdout: (data) => {
-                    output += data.toString()
-                },
-                stderr: (data) => {
-                    errorOutput += data.toString()
-                }
-            }
-        })
+        await exec('chmod', ['+x', `${githubWorkspace}/scp.sh`])
+        await exec(`./${githubWorkspace}/scp.sh`, [sshKey, ipAddress, deploymentPath, usename])
     }
 
     deploy()
