@@ -1,6 +1,6 @@
 {
   "name": "deployer-action",
-  "version": "0.2.14",
+  "version": "0.2.15",
   "description": "An action that helps you deploy applications to your VPS. Without exposing your git credentials or SSH keys",
   "main": "index.js",
   "scripts": {
