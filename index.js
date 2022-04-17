@@ -9,7 +9,6 @@ try {
 
     // Copy the repo using scp
     const scpCommand = `scp -i ${sshKey} -r . ${ipAddress}:${deploymentPath}`
-    console.log(`Executing: ${scpCommand}`)
     
     (async () => {
         await exec(scpCommand)
@@ -17,6 +16,5 @@ try {
     core.setOutput('deployment-path', deploymentPath)
     core.setOutput('deployment-time', now.toISOString())
 } catch (error) {
-    console.log(error)
     core.setFailed(`Action failed with error ${error}`);
 }
