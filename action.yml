@@ -21,3 +21,6 @@ inputs:
 outputs:
   deployment-time:
       description: The time the deployment was completed
+branding:
+  icon: 'upload'
+  color: 'green'
