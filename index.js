@@ -8,6 +8,8 @@ try {
     const now = new Date()
     
     (async () => {
+        // establish ssh connection
+        core.setOutput('ssh-connection', `ssh -i ${sshKey} ${ipAddress}`)
         await exec('scp', ['-i', sshKey, '-r', '.', ipAddress, deploymentPath])
     })()
     core.setOutput('deployment-path', deploymentPath)
