@@ -12,8 +12,8 @@ try {
     const actionPath = env.GITHUB_ACTION_PATH
 
     const deploy = async () => {
-        await exec('chmod', ['+x', './scp.sh'])
-        await exec(`./scp.sh`, [sshKey, ipAddress, deploymentPath, usename])
+        await exec('ssh', ['-i', sshKey, `${usename}@${ipAddress}`, `"mkdir -p $directory"`])
+        await exec('scp', ['-i', sshKey, '-r', './*', `${usename}@${ipAddress}:${deploymentPath}`])
     }
 
     deploy()
