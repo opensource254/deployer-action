@@ -9773,7 +9773,7 @@ try {
     const actionPath = process.cwd()
 
     const deploy = async () => {
-        await exec('chmod', ['+x', __nccwpck_require__.ab + "scp.sh"])
+        await exec('chmod', ['+x', `${actionPath}/scp.sh`])
         await exec(`./${actionPath}/scp.sh`, [sshKey, ipAddress, deploymentPath, usename])
     }
 
