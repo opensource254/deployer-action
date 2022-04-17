@@ -9768,10 +9768,11 @@ try {
     const sshKey = core.getInput('ssh-key')
     const username = core.getInput('username')
     const now = new Date()
+    const githubWorkSpace = process.env.GITHUB_WORKSPACE
 
     const deploy = async () => {
         await exec('ssh-keyscan', ['-H', ipAddress, '>>', '~/.ssh/known_hosts'])
-        await exec('ssh', ['-i', sshKey, `${username}@${ipAddress}`, `"mkdir -p ${deploymentPath}"`, '-o', 'StrictHostKeyChecking=no', '-o', 'UserKnownHostsFile=/dev/null'])
+        await exec('ssh', ['-o', 'StrictHostKeyChecking=no', '-i', sshKey, `${username}@${ipAddress}`, `"mkdir -p ${deploymentPath}"`])
         await exec('scp', ['-i', sshKey, '-r', './*', `${username}@${ipAddress}:${deploymentPath}`])
     }
 
