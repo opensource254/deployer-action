@@ -1,5 +1,5 @@
-import core from '@actions/core';
-import { exec } from '@actions/exec';
+const core = require('@actions/core');
+const { exec } = require('@actions/exec');
 
 try {
     const ipAddress = core.getInput('ip-address')
@@ -17,5 +17,6 @@ try {
     core.setOutput('deployment-path', deploymentPath)
     core.setOutput('deployment-time', now.toISOString())
 } catch (error) {
-    core.setFailed(error)
+    console.log(error)
+    core.setFailed(`Action failed with error ${error}`);
 }
