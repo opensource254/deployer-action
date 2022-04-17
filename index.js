@@ -19,7 +19,6 @@ try {
     deploy()
     core.setOutput('deployment-path', deploymentPath)
     core.setOutput('deployment-time', now.toISOString())
-    core.setOutput('deployment-output', output)
 } catch (error) {
     const e = new Error(error)
     core.setFailed(`Action failed with message: ${e.message}`)
