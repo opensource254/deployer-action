@@ -9769,11 +9769,8 @@ try {
     const username = core.getInput('username')
     const now = new Date()
 
-    const env = process.env;
-    const actionPath = env.GITHUB_ACTION_PATH
-
     const deploy = async () => {
-        await exec('ssh', ['-i', sshKey, `${username}@${ipAddress}`, `"mkdir -p $directory"`])
+        await exec('ssh', ['-i', sshKey, `${username}@${ipAddress}`, `"mkdir -p ${directory}"`, '-o', 'StrictHostKeyChecking=no', '-o', 'UserKnownHostsFile=/dev/null'])
         await exec('scp', ['-i', sshKey, '-r', './*', `${username}@${ipAddress}:${deploymentPath}`])
     }
 
