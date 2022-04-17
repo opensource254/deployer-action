@@ -2977,14 +2977,19 @@ try {
     const usename = core.getInput('usename')
     const now = new Date()
     
-    (async () => {
+    const deploy = async () => {
         await exec('chmod', ['+x', 'scp.sh'])
         await exec('./scp.sh', [sshKey, ipAddress, deploymentPath, usename])
-    })()
+    }
+
+    deploy()
     core.setOutput('deployment-path', deploymentPath)
     core.setOutput('deployment-time', now.toISOString())
 } catch (error) {
-    core.setFailed(`Action failed with error ${error}`);
+    const e = new Error(error)
+    core.setFailed(`Action failed with message: ${e.message}`)
+    core.setFailed(e.stack)
+    core.setFailed(error)
 }
 })();
 
