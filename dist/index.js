@@ -9771,7 +9771,8 @@ try {
     const githubWorkSpace = process.env.GITHUB_WORKSPACE
 
     const deploy = async () => {
-        await exec('ssh-keyscan', ['-H', ipAddress, '>>', '~/.ssh/known_hosts'])
+        exec('source', ['agent-start', `"$GITHUB_ACTION"`])
+        exec('echo', ["$INPUT_SSH_KEY", 'agent-add'])
         await exec('ssh', ['-o', 'StrictHostKeyChecking=no', '-i', sshKey, `${username}@${ipAddress}`, `"mkdir -p ${deploymentPath}"`])
         await exec('scp', ['-i', sshKey, '-r', './*', `${username}@${ipAddress}:${deploymentPath}`])
     }
