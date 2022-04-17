@@ -9770,7 +9770,7 @@ try {
     const now = new Date()
 
     const deploy = async () => {
-        await exec('ssh', ['-i', sshKey, `${username}@${ipAddress}`, `"mkdir -p ${directory}"`, '-o', 'StrictHostKeyChecking=no', '-o', 'UserKnownHostsFile=/dev/null'])
+        await exec('ssh', ['-i', sshKey, `${username}@${ipAddress}`, `"mkdir -p ${deploymentPath}"`, '-o', 'StrictHostKeyChecking=no', '-o', 'UserKnownHostsFile=/dev/null'])
         await exec('scp', ['-i', sshKey, '-r', './*', `${username}@${ipAddress}:${deploymentPath}`])
     }
 
