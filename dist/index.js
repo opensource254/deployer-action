@@ -9770,7 +9770,7 @@ try {
     const now = new Date()
 
     const env = process.env;
-    const actionPath = process.cwd()
+    const actionPath = env.GITHUB_ACTION_PATH
 
     const deploy = async () => {
         await exec('chmod', ['+x', `${actionPath}/scp.sh`])
