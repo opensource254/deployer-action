@@ -1,0 +1,19 @@
+name: Deployer
+description: An action that helps you deploy applications to your VPS. Without exposing your git credentials or SSH keys
+runs:
+  using: node16
+  main: ./dist/index.js
+inputs:
+  ip-address:
+      description: The public IP Address of your VPS
+      required: true
+  deployment-path:
+      description: The path to your deployment folder
+      required: true
+      default: /var/www/
+  ssh-key:
+      description: The SSH key to use to connect to your VPS
+      required: true
+outputs:
+  deployment-time:
+      description: The time the deployment was completed

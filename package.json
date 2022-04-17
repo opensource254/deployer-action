@@ -1,0 +1,29 @@
+{
+  "name": "deployer-action",
+  "version": "0.0.0",
+  "description": "An action that helps you deploy applications to your VPS. Without exposing your git credentials or SSH keys",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Deployer",
+    "GH",
+    "actions"
+  ],
+  "author": {
+    "name": "Stanley Masinde"
+  },
+  "maintainers": [
+    {
+      "name": "Stanley Masinde",
+      "url": "https://stanleymasinde.github.io"
+    }
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "@actions/exec": "^1.1.1",
+    "@actions/github": "^5.0.1"
+  }
+}
